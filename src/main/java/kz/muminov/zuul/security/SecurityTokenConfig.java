@@ -18,8 +18,12 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
                 .and()
                     .addFilterAfter(new JwtTokenAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
-                    .antMatchers( HttpMethod.POST,"/auth/**").permitAll()
-                    .anyRequest().authenticated();
+                    .antMatchers(HttpMethod.POST,"/auth/**").permitAll()
+                    .antMatchers(HttpMethod.GET, "/menu/**").permitAll()
+                    .antMatchers(HttpMethod.GET, "/meal/**").permitAll()
+                    .anyRequest().authenticated()
+        .and().cors();
     }
+
 
 }

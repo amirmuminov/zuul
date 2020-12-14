@@ -29,7 +29,6 @@ public class JwtTokenAuthenticationFilter extends OncePerRequestFilter {
         }
 
         String token = header.replace("Bearer ", "");
-        System.out.println(token);
         try {
 
             Claims claims = Jwts.parser()
